@@ -1,0 +1,102 @@
+%setStyle {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+%setStyleContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: cornflowerblue;
+}
+
+%setStyleInputTextarea {
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 2px solid black;
+    border-radius: 5px;
+    background: transparent;
+    background-color: #ffffff;
+    font-size: 15px;
+}
+
+%setStyleLabelForm {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    cursor: text;
+    transition: 0.2s;
+}
+
+%setStyleButtonForm {
+    margin: 20px 0;
+    padding: 10px 0;
+    outline: none;
+    border: 2px solid black;
+    width: 100%;
+    cursor: pointer;
+    background-color: #aaaaaa;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+* {
+    @extend %setStyle;
+}
+
+.container {
+    @extend %setStyleContainer;
+
+    form {
+        width: 90%;
+        max-width: 600px;
+
+        .contact-form {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        input,
+        textarea {
+            @extend %setStyleInputTextarea;
+        }
+
+        label {
+            @extend %setStyleLabelForm;
+        }
+
+        button {
+            @extend %setStyleButtonForm;
+        }
+
+        input:focus~label,
+        input:valid~label,
+        textarea:focus~label,
+        textarea:valid~label {
+            top: -30px;
+            font-size: 15px;
+        }
+    }
+}
+
+@mixin mydivMessage($colory: red) {
+    padding: 10px 0;
+    background-color: burlywood;
+    color: $colory
+}
+
+.divMessage {
+    @include mydivMessage($colory: green);
+
+}
+
+.divMessageError {
+    @include mydivMessage();
+}
